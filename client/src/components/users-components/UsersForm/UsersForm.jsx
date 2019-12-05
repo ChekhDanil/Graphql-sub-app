@@ -15,7 +15,7 @@ class UsersForm extends React.Component {
     handleSave = () => {
         const {selectedValue, onClose, addUser} = this.props;
         const {name} = selectedValue;
-        addUser({name:name});
+        addUser({name});
         onClose();
     };
 

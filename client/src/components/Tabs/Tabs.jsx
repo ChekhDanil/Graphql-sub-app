@@ -5,12 +5,9 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import SwipeableViews from 'react-swipeable-views';
 
-import StarIcon from '@material-ui/icons/Star';
-import StarsIcon from '@material-ui/icons/Stars';
 import GroupIcon from '@material-ui/icons/Group';
 
-import Launches from '../../Pages/Launches/Launches';
-import Ships from '../../Pages/Ships/Ships';
+
 import withHocs from './TabsHoc';
 import Users from "../../Pages/Users/Users";
 
@@ -36,14 +33,10 @@ class SimpleTabs extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs variant='fullWidth' value={value} onChange={this.handleChange}>
-            <Tab label="Ships" icon={<StarsIcon />} />
-                    <Tab label="Launches" icon={<StarIcon />} />
             <Tab label="Users" icon={<GroupIcon />} />
           </Tabs>
         </AppBar>
         <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value} onChangeIndex={this.handleChangeIndex} >
-          <TabContainer dir={theme.direction}><Ships /></TabContainer>
-           <TabContainer dir={theme.direction}><Launches /></TabContainer>
           <TabContainer dir={theme.direction}><Users /></TabContainer>
         </SwipeableViews>
       </div>

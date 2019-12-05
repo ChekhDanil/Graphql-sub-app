@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import UsersTable from "../../components/users-components/UsersTable/UsersTable";
 import UsersForm from "../../components/users-components/UsersForm/UsersForm";
-import withHocs from './DirectorsHoc';
+import withHocs from './UsersHoc';
 
 class Users extends React.Component {
     state = {

@@ -43,66 +43,35 @@ class DirectorsTable extends React.Component {
   handleDialogOpen = () => { this.setState({ openDialog: true }); };
   handleDialogClose = () => { this.setState({ openDialog: false }); };
 
-  handleClick = ({ currentTarget }, data) => {
-    this.setState({
-      anchorEl: currentTarget,
-      data,
-    });
-  };
-
   handleClose = () => { this.setState({ anchorEl: null }); };
-
-  handleEdit = (row) => {
-    this.props.onOpen(this.state.data);
-    this.handleClose();
-  };
-
-  handleDelete = () => {
-    this.handleDialogOpen();
-    this.handleClose();
-  };
 
   render() {
     const { anchorEl, openDialog, data: activeElem = {}, name } = this.state;
     const { classes, data = {} } = this.props;
-    const { directors = [] } = data;
+    const { ships = [] } = data;
 
     return (
       <>
         <Paper>
           <DirectorsSearch name={name} handleChange={this.handleChange} handleSearch={this.handleSearch} />
         </Paper>
-        <DirectorsDialog open={openDialog} handleClose={this.handleDialogClose} id={activeElem.id} />
         <Paper className={classes.root}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell align="right">Age</TableCell>
-                <TableCell>Movies</TableCell>
-                <TableCell></TableCell>
+                <TableCell>Ship Name</TableCell>
+                <TableCell align="right">Type</TableCell>
+                <TableCell align="right">Roles</TableCell>
+
               </TableRow>
             </TableHead>
             <TableBody>
-              {directors.map(director => {
+              {ships.map(ship => {
                 return (
-                  <TableRow key={director.id}>
-                    <TableCell component="th" scope="row">{director.name}</TableCell>
-                    <TableCell align="right">{director.age}</TableCell>
-                    <TableCell>
-                      {director.movies.map((movie, key) => <div key={movie.name}>{`${key+1}. `}{movie.name}</div>)}
-                    </TableCell>
-                    <TableCell align="right">
-                      <>
-                        <IconButton color="inherit" onClick={(e) => this.handleClick(e, director)}>
-                          <MoreIcon />
-                        </IconButton>
-                        <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose} >
-                          <MenuItem onClick={() => this.handleEdit(director)}><CreateIcon /> Edit</MenuItem>
-                          <MenuItem onClick={this.handleDelete}><DeleteIcon /> Delete</MenuItem>
-                        </Menu>
-                      </>
-                    </TableCell>
+                  <TableRow key={ship.id}>
+                    <TableCell component="th" scope="row">{ship.name}</TableCell>
+                    <TableCell align="right">{ship.type}</TableCell>
+                    <TableCell align="right">{ship.roles.map(role => `${role} `)}</TableCell>
                   </TableRow>
                 );
               })}

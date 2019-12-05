@@ -3,8 +3,8 @@ import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
-import DirectorsTable from '../DirectorsTable/DirectorsTable';
-import DirectorsForm from '../DirectorsForm/DirectorsForm';
+import DirectorsTable from '../../components/director-components/DirectorsTable/DirectorsTable';
+import DirectorsForm from '../../components/director-components/DirectorsForm/DirectorsForm';
 
 import withHocs from './DirectorsHoc';
 
@@ -13,7 +13,7 @@ class Directors extends React.Component {
     open: false,
     name: '',
     age: 0,
-  }
+  };
 
   handleClickOpen = (data) => {
     this.setState({
@@ -35,9 +35,6 @@ class Directors extends React.Component {
         <DirectorsForm handleChange={this.handleChange} selectedValue={{ name, age, id }} open={open} onClose={this.handleClose} />
         <div className={classes.wrapper}>
           <DirectorsTable onOpen={this.handleClickOpen} onClose={this.handleClose} />
-          <Fab onClick={() => this.handleClickOpen(null)} color="primary" aria-label="Add" className={classes.fab}>
-            <AddIcon />
-          </Fab>
         </div>
       </>
     );

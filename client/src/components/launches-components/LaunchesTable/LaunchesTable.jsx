@@ -31,7 +31,7 @@ class LaunchesTable extends React.Component {
                                     <TableCell component="th" scope="row">{launch.mission_name}</TableCell>
                                     <TableCell align="right">{launch.details}</TableCell>
                                     <TableCell align="right">
-                                        <img src={launch.links.flickr_images[0]}  width={200} alt=""/>
+                                        <img src={launch.links.flickr_images[0]}  width={200} height={200} alt=""/>
                                     </TableCell>
                                 </TableRow>
                             );

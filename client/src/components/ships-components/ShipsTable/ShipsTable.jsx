@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import withHocs from './DirectorsTableHoc';
+import withHocs from './ShipsTableHoc';
 
 class ShipsTable extends React.Component {
     render() {

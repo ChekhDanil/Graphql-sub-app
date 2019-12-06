@@ -1,8 +1,11 @@
-// Resolvers define the technique for fetching the types defined in the
-// schema. This resolver retrieves books from the "books" array above.
+const NEW_USER = "NEW_USER";
+const Users = require("../models/user");
+
 const resolvers = {
   Query: {
-    users: () => users
+    users(parent, args, context, info) {
+      return Users.find({});
+    }
   }
 };
 

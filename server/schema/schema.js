@@ -1,4 +1,4 @@
-const graphql = require("graphql");
+/* const graphql = require("graphql");
 
 const {
   GraphQLObjectType,
@@ -10,6 +10,9 @@ const {
   GraphQLNonNull,
   GraphQLBoolean
 } = graphql;
+const { PubSub } = require("apollo-server");
+
+const pubsub = new PubSub();
 
 const Users = require("../models/user");
 
@@ -57,8 +60,14 @@ const Query = new GraphQLObjectType({
     }
   }
 });
-
-module.exports = new GraphQLSchema({
-  query: Query,
-  mutation: Mutation
-});
+const USER_ADDED = "USER_ADDED";
+/* 
+const Subscription = new GraphQLObjectType({
+  name: "Subscription",
+  fields: {
+    userAdded: {
+      type:
+      subscribe: () => pubsub.asyncIterator([USER_ADDED])
+    }
+  }
+}); */

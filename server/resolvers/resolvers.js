@@ -6,6 +6,17 @@ const resolvers = {
     users(parent, args, context, info) {
       return Users.find({});
     }
+  },
+  Mutation: {
+    addUser: async (_, { name }) => {
+      const user = new Users({ name });
+      await user.save();
+      return user;
+    },
+    deleteUser: async (_, { id }) => {
+      const user = await Users.findByIdAndRemove(id);
+      return user;
+    }
   }
 };
 

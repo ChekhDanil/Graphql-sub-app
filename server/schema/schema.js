@@ -49,17 +49,7 @@ const Mutation = new GraphQLObjectType({
     }
   }
 });
-const Query = new GraphQLObjectType({
-  name: "Query",
-  fields: {
-    users: {
-      type: new GraphQLList(UserType),
-      resolve(parent, args) {
-        return Users.find({});
-      }
-    }
-  }
-});
+
 const USER_ADDED = "USER_ADDED";
 /* 
 const Subscription = new GraphQLObjectType({

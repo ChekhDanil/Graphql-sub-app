@@ -6,7 +6,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
 const client = new ApolloClient({
-  uri: "http://localhost:3005/graphql"
+  uri: "http://localhost:4000"
   /*  uri:'https://api.spacex.land/graphql/'*/
 });
 

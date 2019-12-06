@@ -11,7 +11,6 @@ const {
   GraphQLBoolean
 } = graphql;
 
-const Directors = require("../models/director");
 const Users = require("../models/user");
 
 const UserType = new GraphQLObjectType({
@@ -22,32 +21,9 @@ const UserType = new GraphQLObjectType({
   })
 });
 
-const DirectorType = new GraphQLObjectType({
-  name: "Director",
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: new GraphQLNonNull(GraphQLString) },
-    age: { type: new GraphQLNonNull(GraphQLInt) }
-  })
-});
-
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    addDirector: {
-      type: DirectorType,
-      args: {
-        name: { type: new GraphQLNonNull(GraphQLString) },
-        age: { type: new GraphQLNonNull(GraphQLInt) }
-      },
-      resolve(parent, { name, age }) {
-        const director = new Directors({
-          name,
-          age
-        });
-        return director.save();
-      }
-    },
     addUser: {
       type: UserType,
       args: {
@@ -59,13 +35,6 @@ const Mutation = new GraphQLObjectType({
           name
         });
         return user.save();
-      }
-    },
-    deleteDirector: {
-      type: DirectorType,
-      args: { id: { type: GraphQLID } },
-      resolve(parent, { id }) {
-        return Directors.findByIdAndRemove(id);
       }
     },
     deleteUser: {

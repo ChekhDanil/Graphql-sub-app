@@ -1,14 +1,10 @@
-import {gql} from 'apollo-boost';
+import { gql } from "apollo-boost";
 
 export const deleteUserMutation = gql`
-mutation ($id: uuid) {
-  delete_users(where: {id: {_eq: $id}}) {
-    returning {
+  mutation($id: ID) {
+    deleteUser(id: $id) {
       id
       name
     }
   }
-}
-
-
 `;

@@ -14,12 +14,11 @@ const {
 const Directors = require("../models/director");
 const Users = require("../models/user");
 
-
 const UserType = new GraphQLObjectType({
   name: "User",
   fields: () => ({
     id: { type: GraphQLID },
-    name: { type: new GraphQLNonNull(GraphQLString) },
+    name: { type: new GraphQLNonNull(GraphQLString) }
   })
 });
 
@@ -28,7 +27,7 @@ const DirectorType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: new GraphQLNonNull(GraphQLString) },
-    age: { type: new GraphQLNonNull(GraphQLInt) },
+    age: { type: new GraphQLNonNull(GraphQLInt) }
   })
 });
 
@@ -52,7 +51,7 @@ const Mutation = new GraphQLObjectType({
     addUser: {
       type: UserType,
       args: {
-        name: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, { name }) {
         console.log(name);
@@ -69,8 +68,13 @@ const Mutation = new GraphQLObjectType({
         return Directors.findByIdAndRemove(id);
       }
     },
-
-
+    deleteUser: {
+      type: UserType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, { id }) {
+        return Users.findByIdAndRemove(id);
+      }
+    }
   }
 });
 const Query = new GraphQLObjectType({

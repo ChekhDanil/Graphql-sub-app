@@ -13,6 +13,9 @@ const typeDefs = gql`
     addUser(name: String!): User
     deleteUser(id: ID!): User
   }
+  type Subscription {
+    newUser: User!
+  }
 `;
 
 module.exports = {

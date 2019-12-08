@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Tabs from './components/Tabs/Tabs';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import theme from './components/theme';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
+import Tabs from './components/Tabs/Tabs';
+import theme from './components/theme';
 
 const client = new ApolloClient({
-/*  uri: 'http://localhost:3005/graphql',*/
   uri:'https://api.spacex.land/graphql/'
 });
 

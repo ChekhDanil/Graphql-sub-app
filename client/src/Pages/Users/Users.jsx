@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import UsersTable from "../../components/users-components/UsersTable/UsersTable";
 import UsersForm from "../../components/users-components/UsersForm/UsersForm";
-import withHocs from './DirectorsHoc';
+import withHocs from './UsersHoc';
 
 class Users extends React.Component {
     state = {
@@ -36,7 +36,7 @@ class Users extends React.Component {
                 <UsersForm handleChange={this.handleChange} selectedValue={{name}} open={open}
                                onClose={this.handleClose}/>
                 <div className={classes.wrapper}>
-                    <UsersTable onOpen={this.handleClickOpen} onClose={this.handleClose}/>
+                    <UsersTable/>
                     <Fab onClick={() => this.handleClickOpen(null)} color="primary" aria-label="Add"
                          className={classes.fab}>
                         <AddIcon/>

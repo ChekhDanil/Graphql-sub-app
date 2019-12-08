@@ -41,6 +41,6 @@ class LaunchesTable extends React.Component {
             </Paper>
         );
     }
-};
+}
 
 export default withHocs(LaunchesTable);

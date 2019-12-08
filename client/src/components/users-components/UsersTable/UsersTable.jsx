@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import DeleteIcon from '@material-ui/icons/Delete';
-import CreateIcon from '@material-ui/icons/Create';
 
 import DirectorsDialog from '../UsersDialog/UsersDialog';
 
@@ -18,15 +17,14 @@ import withHocs from './UsersTableHoc';
 
 class UsersTable extends React.Component {
     state = {
-        anchorEl: null,
         openDialog: false,
-        name: '',
-    };
 
+    };
 
     handleDialogOpen = () => {
         this.setState({openDialog: true});
     };
+
     handleDialogClose = () => {
         this.setState({openDialog: false});
     };
@@ -37,11 +35,9 @@ class UsersTable extends React.Component {
             data,
         });
     };
-
     handleClose = () => {
         this.setState({anchorEl: null});
     };
-
 
     handleDelete = () => {
         this.handleDialogOpen();
@@ -49,7 +45,7 @@ class UsersTable extends React.Component {
     };
 
     render() {
-        const {anchorEl, openDialog, data: activeElem = {}, name} = this.state;
+        const {anchorEl, openDialog, data: activeElem = {}} = this.state;
         const {classes, data = {}} = this.props;
         const {users = []} = data;
 
@@ -63,7 +59,7 @@ class UsersTable extends React.Component {
                             <TableRow>
                                 <TableCell>User ID</TableCell>
                                 <TableCell align="right">User Name</TableCell>
-                              <TableCell></TableCell>
+                                <TableCell></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -71,7 +67,7 @@ class UsersTable extends React.Component {
                                 return (
                                     <TableRow key={user.id}>
                                         <TableCell>{user.id}</TableCell>
-                                      <TableCell align="right">{user.name}</TableCell>
+                                        <TableCell align="right">{user.name}</TableCell>
                                         <TableCell align="right">
                                             <>
                                                 <IconButton color="inherit"

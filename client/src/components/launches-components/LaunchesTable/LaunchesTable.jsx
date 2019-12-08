@@ -12,7 +12,6 @@ class LaunchesTable extends React.Component {
     render() {
         const {classes, data = {}} = this.props;
         const {launchesPast = []} = data;
-        console.log(launchesPast);
         return (
             <Paper className={classes.root}>
                 <Table>

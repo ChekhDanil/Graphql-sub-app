@@ -1,5 +1,4 @@
 const Users = require("../models/user");
-const { PubSub } = require("apollo-server-express");
 const NEW_USER = "NEW_USER";
 const resolvers = {
   Query: {

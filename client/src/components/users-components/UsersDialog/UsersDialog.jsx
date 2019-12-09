@@ -17,7 +17,7 @@ class UsersDialog extends React.Component {
     console.log(deleteUser);
     deleteUser(id);
     handleClose();
-  }
+  };
 
   render() {
     const { open, handleClose } = this.props;

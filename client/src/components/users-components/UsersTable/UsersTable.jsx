@@ -13,94 +13,92 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import DirectorsDialog from "../UsersDialog/UsersDialog";
 
 import withHocs from "./UsersTableHoc";
-import { useSubscription } from "@apollo/react-hooks";
+
 class UsersTable extends React.Component {
-  state = {
-    anchorEl: null,
-    openDialog: false,
-    name: ""
-  };
+    state = {
+        anchorEl: null,
+        openDialog: false,
+    };
 
-  handleDialogOpen = () => {
-    this.setState({ openDialog: true });
-  };
-  handleDialogClose = () => {
-    this.setState({ openDialog: false });
-  };
+    handleDialogOpen = () => {
+        this.setState({openDialog: true});
+    };
+    handleDialogClose = () => {
+        this.setState({openDialog: false});
+    };
 
-  handleClick = ({ currentTarget }, data) => {
-    this.setState({
-      anchorEl: currentTarget,
-      data
-    });
-  };
+    handleClick = ({currentTarget}, data) => {
+        this.setState({
+            anchorEl: currentTarget,
+            data
+        });
+    };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+    handleClose = () => {
+        this.setState({anchorEl: null});
+    };
 
-  handleDelete = () => {
-    this.handleDialogOpen();
-    this.handleClose();
-  };
+    handleDelete = () => {
+        this.handleDialogOpen();
+        this.handleClose();
+    };
 
-  render() {
-    const { anchorEl, openDialog, data: activeElem = {}, name } = this.state;
-    const { classes, data = {} } = this.props;
-    console.log("data", data);
-    const { users = [] } = data;
+    render() {
+        const {anchorEl, openDialog, data: activeElem = {}} = this.state;
+        const {classes, data = {}} = this.props;
+        const {users = []} = data;
 
-    return (
-      <>
-        <DirectorsDialog
-          open={openDialog}
-          handleClose={this.handleDialogClose}
-          id={activeElem.id}
-        />
-        <Paper className={classes.root}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>User ID</TableCell>
-                <TableCell align="right">User Name</TableCell>
-                <TableCell></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {users.map(user => {
-                return (
-                  <TableRow key={user.id}>
-                    <TableCell>{user.id}</TableCell>
-                    <TableCell align="right">{user.name}</TableCell>
-                    <TableCell align="right">
-                      <>
-                        <IconButton
-                          color="inherit"
-                          onClick={e => this.handleClick(e, user)}
-                        >
-                          <MoreIcon />
-                        </IconButton>
-                        <Menu
-                          id="simple-menu"
-                          anchorEl={anchorEl}
-                          open={Boolean(anchorEl)}
-                          onClose={this.handleClose}
-                        >
-                          <MenuItem onClick={this.handleDelete}>
-                            <DeleteIcon /> Delete
-                          </MenuItem>
-                        </Menu>
-                      </>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </Paper>
-      </>
-    );
-  }
+        return (
+            <>
+                <DirectorsDialog
+                    open={openDialog}
+                    handleClose={this.handleDialogClose}
+                    id={activeElem.id}
+                />
+                <Paper className={classes.root}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>User ID</TableCell>
+                                <TableCell align="right">User Name</TableCell>
+                                <TableCell></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {users.map(user => {
+                                return (
+                                    <TableRow key={user.id}>
+                                        <TableCell>{user.id}</TableCell>
+                                        <TableCell align="right">{user.name}</TableCell>
+                                        <TableCell align="right">
+                                            <>
+                                                <IconButton
+                                                    color="inherit"
+                                                    onClick={e => this.handleClick(e, user)}
+                                                >
+                                                    <MoreIcon/>
+                                                </IconButton>
+                                                <Menu
+                                                    id="simple-menu"
+                                                    anchorEl={anchorEl}
+                                                    open={Boolean(anchorEl)}
+                                                    onClose={this.handleClose}
+                                                >
+                                                    <MenuItem onClick={this.handleDelete}>
+                                                        <DeleteIcon/> Delete
+                                                    </MenuItem>
+                                                </Menu>
+                                            </>
+                                        </TableCell>
+                                    </TableRow>
+                                );
+                            })}
+                        </TableBody>
+                    </Table>
+                </Paper>
+            </>
+        );
+    }
 }
 
 export default withHocs(UsersTable);

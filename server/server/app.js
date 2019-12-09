@@ -1,12 +1,12 @@
-const graphqlHTTP = require("express-graphql");
 const mongoose = require("mongoose");
 const express = require("express");
-const cors = require("cors");
 const { ApolloServer } = require("apollo-server-express");
-const { typeDefs } = require("../typedefs/typedefs");
-const { resolvers } = require("../resolvers/resolvers");
 const { PubSub } = require("apollo-server-express");
 const http = require("http");
+
+const { typeDefs } = require("../typedefs/typedefs");
+const { resolvers } = require("../resolvers/resolvers");
+
 const app = express();
 const pubsub = new PubSub();
 const server = new ApolloServer({
@@ -16,7 +16,6 @@ const server = new ApolloServer({
 });
 
 server.applyMiddleware({ app });
-
 const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
